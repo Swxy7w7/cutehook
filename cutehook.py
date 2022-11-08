@@ -3,12 +3,13 @@ import requests
 from requests import get, post
 from time import sleep 
 from sys import stdout as _stdout
-from os import name as _name
+from os import name as _name, system as _system
 from ctypes import c_int, c_byte, Structure, byref, windll
 
 def _colors(color: str) -> str:
     return f"\033[38;2;{color}m"
 
+Windows = _name == 'nt'
 c = _colors('0;255;196')
 m = _colors('161;42;252')
 g = _colors('94;255;110')
@@ -23,6 +24,10 @@ if _name == 'nt':
     class _OcultInfo(Structure):
         _fields_ = [("size", c_int),
                     ("visible", c_byte)]
+
+def Uwu(uwu: str):
+    if Windows:
+        return _system(f"title {uwu}")
 
 class Ocult:
 
@@ -85,8 +90,8 @@ def CHook():
     webhook = input(f" {ml}Enter ur webhook {c}> {w}")
     name = input(f" {ml}Enter a webhook name {c}> {w}")
     message = input(f" {ml}Enter a message {c}> {w}")
-    delay = input(f" {ml}Enter a delay {r}[int/float] {c}> {w}")
-    amount = input(f" {ml}Enter an amount {r}[int/inf] {c}> {w}")
+    delay = input(f" {ml}Enter a delay {c}> {w}")
+    amount = input(f" {ml}Enter an amount {c}> {w}")
     hookDeleter = input(f" {ml}Delete webhook after spam? {r}[Y/N] {c}> {w}")
     try:
         delay = float(delay)
@@ -100,7 +105,6 @@ def CHook():
 
 
 if __name__ == '__main__':
-    Windows = _name == 'nt'
     os.system('cls' if Windows else 'clear')
-    os.system('title cutehook on top LOL')
+    Uwu("CuteHook On Top LOL")
     CHook()
