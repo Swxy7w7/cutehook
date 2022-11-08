@@ -25,8 +25,7 @@ gl = _colors('0;255;128')
 
 if Windows:
     class _OcultInfo(Structure):
-        _fields_ = [("size", c_int),
-                    ("visible", c_byte)]
+        _fields_ = [("size", c_int), ("visible", c_byte)]
 
 def Uwu(uwu: str):
     if Windows:
@@ -104,7 +103,6 @@ def CHook():
     else:
         main(webhook, name, delay, amount, message, hookDeleter)
         _exit()
-
 
 if __name__ == '__main__':
     os.system('cls' if Windows else 'clear')
