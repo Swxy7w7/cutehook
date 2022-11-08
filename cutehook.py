@@ -42,8 +42,6 @@ class Ocult:
         ci = _OcultInfo()
         handle = windll.kernel32.GetStdHandle(-11)
         windll.kernel32.GetConsoleCursorInfo(handle, byref(ci))
-        ci.visible = visible
-        windll.kernel32.SetConsoleCursorInfo(handle, byref(ci))
 
 def _exit():
     sleep(5)
