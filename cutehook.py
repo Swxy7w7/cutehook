@@ -11,7 +11,7 @@ def _colors(color: str) -> str:
 
 c = _colors('0;255;196')
 m = _colors('161;42;252')
-g = _colors('0;255;0')
+g = _colors('94;255;110')
 r = _colors('255;0;0')
 w = _colors('255;255;255')
 y = _colors('255;255;0')
@@ -66,8 +66,8 @@ def main(webhook, name, delay, amount, message, hookDeleter):
         counter += 1
     if hookDeleter.lower() == "y":
         requests.delete(webhook)
-        print(f'{g}webhook deleted')
-    print(f'{g}done...')
+        print(f' {m}[{g}+{m}]{g} Webhook deleted')
+    print(f' {m}[{g}+{m}]{g} Done!{w}')
 
 
 def CHook():
