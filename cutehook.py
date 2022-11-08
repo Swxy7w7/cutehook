@@ -10,10 +10,11 @@ def _colors(color: str) -> str:
     return f"\033[38;2;{color}m"
 
 c = _colors('0;255;196')
-m = _colors('155;0;72')
+m = _colors('161;42;252')
 g = _colors('0;255;0')
 r = _colors('255;0;0')
 w = _colors('255;255;255')
+y = _colors('255;255;0')
 rl = _colors('255;28;59')
 ml = _colors('255;0;102')
 gl = _colors('0;255;128')
@@ -57,8 +58,8 @@ def main(webhook, name, delay, amount, message, hookDeleter):
             payload = post(webhook, json={"content": str(message), "name": str(name), "avatar_url": "https://i.imgur.com/lk79Hlc.jpeg"})
             if payload.status_code == 204:
                 print(f" {m}[{w}+{m}] Sent")
-            else:
-                print(f" {r}[-] Fail")
+            if payload.status_code == 429:
+                print(f" {r}[{y}*{r}] {rl}RateLimit")
         except:
             print()
         sleep(float(delay))
