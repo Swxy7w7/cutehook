@@ -10,6 +10,9 @@ def _colors(color: str) -> str:
     return f"\033[38;2;{color}m"
 
 Windows = _name == 'nt'
+x = input
+z = print
+s = sleep
 c = _colors('0;255;196')
 m = _colors('161;42;252')
 g = _colors('94;255;110')
@@ -42,11 +45,12 @@ class Ocult:
         ci = _OcultInfo()
         handle = windll.kernel32.GetStdHandle(-11)
         windll.kernel32.GetConsoleCursorInfo(handle, byref(ci))
+        ci.visible = visible
+        windll.kernel32.SetConsoleCursorInfo(handle, byref(ci))
 
 def _exit():
-    sleep(5)
+    s(3)
     exit()
-
 
 def check_hook(hook):
     info = get(hook).text
@@ -60,22 +64,22 @@ def main(webhook, name, delay, amount, message, hookDeleter):
         try:
             payload = post(webhook, json={"content": str(message), "name": str(name), "avatar_url": "https://i.imgur.com/lk79Hlc.jpeg"})
             if payload.status_code == 204:
-                print(f" {m}[{w}+{m}] Sent")
+                z(f" {m}[{w}+{m}] Sent")
             if payload.status_code == 429:
-                print(f" {r}[{y}*{r}] {rl}RateLimit")
+                z(f" {r}[{y}*{r}] {rl}RateLimit")
         except:
-            print()
-        sleep(float(delay))
+            z()
+        s(float(delay))
         counter += 1
     if hookDeleter.lower() == "y":
         requests.delete(webhook)
-        print(f' {m}[{g}+{m}]{g} Webhook deleted')
-    print(f' {m}[{g}+{m}]{g} Done!{w}')
+        z(f' {m}[{g}+{m}]{g} Webhook deleted')
+    z(f' {m}[{g}+{m}]{g} Done!{w}')
 
 
 def CHook():
     Ocult.Ocultism()
-    print(f"""
+    z(f"""
     {ml}               __          {rl} __                      __         
     {ml}              /\ \__       {rl}/\ \                    /\ \        
     {ml}  ___   __  __\ \ ,_\    __{rl}\ \ \___     ___     ___\ \ \/'\    
@@ -85,12 +89,12 @@ def CHook():
      {ml}\/____/ \/___/   \/__/\/____/ {rl}\/_/\/_/\/___/  \/___/  \/_/\/_/
                                                           {gl}by cattyn
      """)
-    webhook = input(f" {ml}Enter ur webhook {c}> {w}")
-    name = input(f" {ml}Enter a webhook name {c}> {w}")
-    message = input(f" {ml}Enter a message {c}> {w}")
-    delay = input(f" {ml}Enter a delay {c}> {w}")
-    amount = input(f" {ml}Enter an amount {c}> {w}")
-    hookDeleter = input(f" {ml}Delete webhook after spam? {r}[Y/N] {c}> {w}")
+    webhook = x(f" {ml}Enter ur webhook {c}> {w}")
+    name = x(f" {ml}Enter a webhook name {c}> {w}")
+    message = x(f" {ml}Enter a message {c}> {w}")
+    delay = x(f" {ml}Enter a delay {c}> {w}")
+    amount = x(f" {ml}Enter an amount {c}> {w}")
+    hookDeleter = x(f" {ml}Delete webhook after spam? {r}[Y/N] {c}> {w}")
     try:
         delay = float(delay)
     except ValueError:
