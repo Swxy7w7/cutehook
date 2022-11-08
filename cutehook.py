@@ -1,6 +1,5 @@
 import os
-import requests
-from requests import get, post
+from requests import get, post, delete
 from time import sleep 
 from sys import stdout as _stdout
 from os import name as _name, system as _system
@@ -10,6 +9,7 @@ def _colors(color: str) -> str:
     return f"\033[38;2;{color}m"
 
 Windows = _name == 'nt'
+Unix = _name == 'posix'
 x = input
 z = print
 s = sleep
@@ -23,7 +23,7 @@ rl = _colors('255;28;59')
 ml = _colors('255;0;102')
 gl = _colors('0;255;128')
 
-if Windows: #xd
+if Windows:
     class _OcultInfo(Structure):
         _fields_ = [("size", c_int),
                     ("visible", c_byte)]
@@ -35,9 +35,9 @@ def Uwu(uwu: str):
 class Ocult:
 
     def Ocultism():
-        if _name == 'nt':
+        if Windows:
             Ocult._ocultism(False)
-        elif _name == 'posix':
+        elif Unix:
             _stdout.write("\033[?25l")
             _stdout.flush()
 
@@ -72,7 +72,7 @@ def main(webhook, name, delay, amount, message, hookDeleter):
         s(float(delay))
         counter += 1
     if hookDeleter.lower() == "y":
-        requests.delete(webhook)
+        delete(webhook)
         z(f' {m}[{g}+{m}]{g} Webhook deleted')
     z(f' {m}[{g}+{m}]{g} Done!{w}')
 
