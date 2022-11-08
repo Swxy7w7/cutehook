@@ -23,7 +23,7 @@ rl = _colors('255;28;59')
 ml = _colors('255;0;102')
 gl = _colors('0;255;128')
 
-if _name == 'nt':
+if Windows: #xd
     class _OcultInfo(Structure):
         _fields_ = [("size", c_int),
                     ("visible", c_byte)]
