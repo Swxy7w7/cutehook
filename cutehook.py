@@ -5,7 +5,7 @@ from sys import stdout as _stdout
 from os import name as _name, system as _system
 from ctypes import c_int, c_byte, Structure, byref, windll
 
-def _colors(color: str) -> str:
+def colors(color: str) -> str:
     return f"\033[38;2;{color}m"
 
 Windows = _name == 'nt'
@@ -13,15 +13,15 @@ Unix = _name == 'posix'
 x = input
 z = print
 s = sleep
-c = _colors('0;255;196')
-m = _colors('161;42;252')
-g = _colors('94;255;110')
-r = _colors('255;0;0')
-w = _colors('255;255;255')
-y = _colors('255;255;0')
-rl = _colors('255;28;59')
-ml = _colors('255;0;102')
-gl = _colors('0;255;128')
+c = colors('0;255;196')
+m = colors('161;42;252')
+g = colors('94;255;110')
+r = colors('255;0;0')
+w = colors('255;255;255')
+y = colors('255;255;0')
+rl = colors('255;28;59')
+ml = colors('255;0;102')
+gl = colors('0;255;128')
 
 if Windows:
     class _OcultInfo(Structure):
@@ -31,21 +31,19 @@ def Uwu(uwu: str):
     if Windows:
         return _system(f"title {uwu}")
 
-class Ocult:
+def Ocultism():
+  if Windows:
+    _Ocultism(False)
+  elif Unix:
+    _stdout.write("\033[?25l")
+    _stdout.flush()
 
-    def Ocultism():
-        if Windows:
-            Ocult._ocultism(False)
-        elif Unix:
-            _stdout.write("\033[?25l")
-            _stdout.flush()
-
-    def _ocultism(visible: bool):
-        ci = _OcultInfo()
-        handle = windll.kernel32.GetStdHandle(-11)
-        windll.kernel32.GetConsoleCursorInfo(handle, byref(ci))
-        ci.visible = visible
-        windll.kernel32.SetConsoleCursorInfo(handle, byref(ci))
+def _Ocultism(visible: bool):
+  ci = _OcultInfo()
+  handle = windll.kernel32.GetStdHandle(-11)
+  windll.kernel32.GetConsoleCursorInfo(handle, byref(ci))
+  ci.visible = visible
+  windll.kernel32.SetConsoleCursorInfo(handle, byref(ci))
 
 def _exit():
     s(3)
@@ -77,7 +75,7 @@ def main(webhook, name, delay, amount, message, hookDeleter):
 
 
 def CHook():
-    Ocult.Ocultism()
+    Ocultism()
     z(f"""
     {ml}               __          {rl} __                      __         
     {ml}              /\ \__       {rl}/\ \                    /\ \        
