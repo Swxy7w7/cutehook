@@ -10,6 +10,7 @@ def colors(color: str) -> str:
 
 Windows = _name == 'nt'
 Unix = _name == 'posix'
+All = __name__ == '__main__'
 x = input
 z = print
 s = sleep
@@ -44,6 +45,9 @@ def _Ocultism(visible: bool):
   windll.kernel32.GetConsoleCursorInfo(handle, byref(ci))
   ci.visible = visible
   windll.kernel32.SetConsoleCursorInfo(handle, byref(ci))
+
+def ichinisan():
+  return _system("cls" if Windows else "clear")
 
 def _exit():
     s(3)
@@ -102,7 +106,7 @@ def CHook():
         main(webhook, name, delay, amount, message, hookDeleter)
         _exit()
 
-if __name__ == '__main__':
-    os.system('cls' if Windows else 'clear')
+if All:
+    ichinisan()
     Uwu("CuteHook On Top LOL")
     CHook()
