@@ -78,7 +78,6 @@ def check_hook(hook):
         ichinisan()
         CHook()
 
-
 def main(webhook, delay, amount, message, hookDeleter):
     counter = 0
     while True if amount == "inf" else counter < int(amount):
@@ -96,7 +95,6 @@ def main(webhook, delay, amount, message, hookDeleter):
         d(webhook)
         z(f' {m}[{g}+{m}]{g} Webhook deleted')
     z(f' {m}[{g}+{m}]{g} Done!{w}')
-
 
 def CHook():
     Uwu(f"𝘾𝙪𝙩𝙚𝙃𝙤𝙤𝙠 ^| 𝙈𝙖𝙙𝙚 𝙗𝙮: 𝙘𝙖𝙩𝙩𝙮𝙣𝙜𝙢𝙙 ^| 𝙒𝙚𝙡𝙘𝙤𝙢𝙚: {OSS}")
