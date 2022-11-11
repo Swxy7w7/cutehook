@@ -1,9 +1,4 @@
-import os
-from requests import get, post, delete
-from time import sleep 
-from sys import stdout as _stdout
-from os import name as _name, system as _system
-from ctypes import c_int, c_byte, Structure, byref, windll
+import os;from requests import get, post, delete;from time import sleep ;from sys import stdout as _stdout;from os import name as _name, system as _system;from ctypes import c_int, c_byte, Structure, byref, windll
 
 def colors(color: str) -> str:
     return f"\033[38;2;{color}m"
