@@ -1,6 +1,8 @@
-import os;from requests import get, post, delete;from time import sleep;from sys import stdout as _stdout;from os import name as _name, system as _system, get_terminal_size as _terminal_size;from ctypes import c_int, c_byte, Structure, byref, windll
-
-####################################### - DO NOT TOUCH - ###########################################################
+from requests import get, post, delete
+from time import sleep
+from sys import stdout as _stdout
+from os import getenv, system, name as _name
+from ctypes import c_int, c_byte, Structure, byref, windll
 
 def colors(color: str) -> str:
     return f"\033[38;2;{color}m"
@@ -8,22 +10,19 @@ def colors(color: str) -> str:
 Windows = _name == 'nt'
 Unix = _name == 'posix'
 All = __name__ == '__main__'
-OSS = os.getenv('COMPUTERNAME')
+OSS = getenv('COMPUTERNAME')
 e = get
 o = post
 d = delete
-x = input
-z = print
+i = input
+p = print
 s = sleep
-c = colors('0;255;196')
 m = colors('161;42;252')
 g = colors('94;255;110')
 r = colors('255;0;0')
 w = colors('255;255;255')
-y = colors('255;255;0')
 rl = colors('255;28;59')
 ml = colors('255;0;102')
-gl = colors('0;255;128')
 
 class _OcultInfo(Structure):
     _fields_ = [("size", c_int), ("visible", c_byte)]
@@ -42,40 +41,24 @@ def ocultism(visible: bool):
     ci.visible = visible
     windll.kernel32.SetConsoleCursorInfo(handle, byref(ci))
 
-def ichinisan():
-    return _system('cls' if Windows else 'clear')
+def clear():
+    return system('cls' if Windows else 'clear')
 
-def Uwu(uwu: str):
+def T(uwu: str):
     if Windows:
-        return _system(f"title {uwu}")
+        return system(f"title {uwu}")
 
-def cc(zerotwo: str, drop: int = None, icon: str = " "):
-  if drop is None:
-    drop = xd(zerotwo=zerotwo)
-    return "\n".join((icon * drop) + zerotwo for zerotwo in zerotwo.splitlines())
-
-def xd(zerotwo: str):
-    try:
-      nya = _terminal_size().columns
-    except OSError:
-        return 0
-    tortuge = zerotwo.splitlines()
-    chocolat = max((len(v) for v in tortuge if v.strip()), default = 0)
-    return int((nya - chocolat) / 2)
-
-def t():
+def back():
     s(3)
     exit()
-
-####################################### - DO NOT TOUCH - ###########################################################
 
 def check_hook(hook):
     msg = '"Unknown Webhook"'
     info = e(hook).text
     if msg in info or 'discord.com/api/webhooks' not in hook:
-        z(f"{m}[{r}!{m}]{w} Webhook Invalid")
-        x(f"{m}[{r}!{m}]{w} Press enter for continue")
-        ichinisan()
+        p(f"{m}[{r}!{m}]{w} Webhook Invalid")
+        i(f"{m}[{r}!{m}]{w} Press enter for continue")
+        clear()
         CHook()
 
 def main(webhook, delay, amount, message, hookDeleter):
@@ -84,20 +67,21 @@ def main(webhook, delay, amount, message, hookDeleter):
         try:
             payload = o(webhook, json={"content": str(message), "avatar_url": "https://i.imgur.com/lk79Hlc.jpeg"})
             if payload.status_code == 204:
-                z(f" {m}[{w}+{m}] Sent")
+                p(f" {m}[{w}+{m}] Sent")
             if payload.status_code == 429:
-                z(f" {r}[{y}*{r}] {rl}RateLimit")
+                p(f" {m}[{r}*{m}] {rl}RateLimit")
         except:
-            z()
+            p()
         s(float(delay))
         counter += 1
     if hookDeleter.lower() == "y":
         d(webhook)
-        z(f' {m}[{g}+{m}]{g} Webhook deleted')
-    z(f' {m}[{g}+{m}]{g} Done!{w}')
+        p(f' {m}[{g}+{m}]{g} Webhook deleted')
+    p(f' {m}[{g}+{m}]{g} Done!{w}')
+
 
 def CHook():
-    Uwu(f"𝘾𝙪𝙩𝙚𝙃𝙤𝙤𝙠 ^| 𝙈𝙖𝙙𝙚 𝙗𝙮: 𝙘𝙖𝙩𝙩𝙮𝙣𝙜𝙢𝙙 ^| 𝙒𝙚𝙡𝙘𝙤𝙢𝙚: {OSS}")
+    T(f"𝘾𝙪𝙩𝙚𝙃𝙤𝙤𝙠 ^| 𝙈𝙖𝙙𝙚 𝙗𝙮: 𝙘𝙖𝙩𝙩𝙮𝙣𝙜𝙢𝙙 ^| 𝙒𝙚𝙡𝙘𝙤𝙢𝙚: {OSS}")
     Ocultism()
     chookbanner = fr"""
     {ml} ______   __  __   ______  ______  {rl} __  __   ______   ______   __  __    
@@ -107,34 +91,20 @@ def CHook():
     {ml}  \/_____/ \/_____/   \/_/  \/_____/{rl} \/_/\/_/ \/_____/ \/_____/ \/_/\/_/ 
     {w}
     """[1:]                             
-    chookbanner = cc(chookbanner)
-    z(chookbanner)
-    z()
-    webhook = x(f" {m}[{r}*{m}]{ml} Enter ur webhook {c}> {w}")
-    ichinisan()
-    z(chookbanner)
-    message = x(f" {m}[{r}*{m}]{ml} Enter a message {c}> {w}")
-    ichinisan()
-    z(chookbanner)
-    delay = x(f" {m}[{r}*{m}]{ml} Enter a delay {c}> {w}")
-    ichinisan()
-    z(chookbanner)
-    amount = x(f" {m}[{r}*{m}]{ml} Enter an amount {c}> {w}")
-    ichinisan()
-    z(chookbanner)
-    hookDeleter = x(f" {m}[{r}*{m}]{ml} Delete webhook after spam? {r}[Y/N] {c}> {w}")
-    ichinisan()
-    z(chookbanner)
-    try:
-        delay = float(delay)
-    except ValueError:
-        t()
-    if not check_hook(webhook) or (not amount.isdigit() and amount != "inf") or (hookDeleter.lower() != "y" and hookDeleter.lower() != "n"):
-        t()
+    p(chookbanner)
+    webhook = i(f" {m}[{r}*{m}]{ml} Enter ur webhook {r}> {w}")
+    if not check_hook(webhook):
+        message = i(f" {m}[{r}*{m}]{ml} Enter a message {r}> {w}")
+    delay = i(f" {m}[{r}*{m}]{ml} Enter a delay {r}> {w}")
+    delay = float(delay)
+    amount = i(f" {m}[{r}*{m}]{ml} Enter an amount {r}> {w}")
+    hookDeleter = i(f" {m}[{r}*{m}]{ml} Delete webhook after spam? [Y/N] {r}> {w}")
+    if not amount.isdigit() and amount != "inf" or (hookDeleter.lower() != "y" and hookDeleter.lower() != "n"):
+        back()
     else:
         main(webhook, delay, amount, message, hookDeleter)
-        t()
+        back()
 
 if All:
-    ichinisan()
+    clear()
     CHook()
