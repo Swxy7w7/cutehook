@@ -95,11 +95,11 @@ def CHook():
     webhook = i(f" {m}[{r}*{m}]{ml} Enter ur Webhook {r}> {w}")
     if not check_hook(webhook):
         message = i(f" {m}[{r}*{m}]{ml} Enter a message {r}> {w}")
-    username = i(f" {m}[{r}*{m}]{ml} Enter name for ur webhook {r}> {w}")
-    delay = i(f" {m}[{r}*{m}]{ml} Enter a delay {r}> {w}")
+    username = i(f" {m}[{r}*{m}]{ml} Enter a name {r}> {w}")
+    delay = i(f" {m}[{r}*{m}]{ml} Enter the delay {r}> {w}")
     delay = float(delay)
-    amount = i(f" {m}[{r}*{m}]{ml} Enter a amount {r}> {w}")
-    hookDeleter = i(f" {m}[{r}*{m}]{ml} Delete webhook after spam? [y/n]: {r}> {w}")
+    amount = i(f" {m}[{r}*{m}]{ml} Enter the amount {r}> {w}")
+    hookDeleter = i(f" {m}[{r}*{m}]{ml} Do you want to delete the webhook after spamming? [y/n]: {r}> {w}")
     if not amount.isdigit() and amount != "inf" or (hookDeleter.lower() != "y" and hookDeleter.lower() != "n"):
         back()
     else:
