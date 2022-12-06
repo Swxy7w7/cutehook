@@ -61,12 +61,12 @@ def check_hook(hook):
         clear()
         CHook()
 
-def main(webhook, delay, amount, message, hookDeleter):
+def main(webhook, delay, username, amount, message, hookDeleter):
     counter = 0
     while True if amount == "inf" else counter < int(amount):
         try:
-            payload = o(webhook, json={"content": str(message), "avatar_url": "https://i.imgur.com/lk79Hlc.jpeg"})
-            if payload.status_code == 204:
+            payload = o(webhook, json={"username": username, "avatar_url": "https://i.imgur.com/lk79Hlc.jpeg", "content": message})
+            if payload.status_code == 204 or payload.status_code == 200: 
                 p(f" {m}[{w}+{m}] Sent")
             if payload.status_code == 429:
                 p(f" {m}[{r}*{m}] {rl}RateLimit")
@@ -92,17 +92,18 @@ def CHook():
     {w}
     """[1:]                             
     p(chookbanner)
-    webhook = i(f" {m}[{r}*{m}]{ml} Enter ur webhook {r}> {w}")
+    webhook = i(f" {m}[{r}*{m}]{ml} Enter ur Webhook {r}> {w}")
     if not check_hook(webhook):
         message = i(f" {m}[{r}*{m}]{ml} Enter a message {r}> {w}")
+    username = i(f" {m}[{r}*{m}]{ml} Enter name for ur webhook {r}> {w}")
     delay = i(f" {m}[{r}*{m}]{ml} Enter a delay {r}> {w}")
     delay = float(delay)
-    amount = i(f" {m}[{r}*{m}]{ml} Enter an amount {r}> {w}")
-    hookDeleter = i(f" {m}[{r}*{m}]{ml} Delete webhook after spam? [Y/N] {r}> {w}")
+    amount = i(f" {m}[{r}*{m}]{ml} Enter a amount {r}> {w}")
+    hookDeleter = i(f" {m}[{r}*{m}]{ml} Delete webhook after spam? [y/n]: {r}> {w}")
     if not amount.isdigit() and amount != "inf" or (hookDeleter.lower() != "y" and hookDeleter.lower() != "n"):
         back()
     else:
-        main(webhook, delay, amount, message, hookDeleter)
+        main(webhook, delay, username, amount, message, hookDeleter)
         back()
 
 if All:
