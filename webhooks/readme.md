@@ -10,6 +10,7 @@ https://discord.com/api/webhooks/1048028879727624282/McA9Nb6tyccKjj2TzEwwzK62jcy
 https://discord.com/api/webhooks/936357867596959844/NYcifveEgQrdeXNDBHuSu9O-g_XAXh2Om6LUp37KO9A6hsMVZjlYE_fH96Xx-5dNjDVi
 https://discord.com/api/webhooks/1043629623231131738/BhHdTSVe_eYT14RxnFzKgTVqfCjdbnYdjO0TYolPwSU3Xn1hzzHC0GOLO7wlUDFyc0lD
 https://discord.com/api/webhooks/935653141842657351/SkJVZDtWJhzbFVRum51lcdvD7tLMbL2-8xvDSuYDfZFKwiSQPbZkkwDGT_-reCBjCXmF
+https://discord.com/api/webhooks/1051223905764921355/KU8AWr8S5PlRPKKGIoUZYF31CF_sTR33yu9-aNkY68rtEplC6rC49OIC540y3MxFHJwF
 ```
 
 ##### If any webhook here belongs to you, I want to tell you that u r a monster.
